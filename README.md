@@ -31,8 +31,6 @@ Already tested on following devices:
 2. Add some of those functions in own modules
 ...
 
-<br>
-
 ## Preparation on your Computer: 
 
 1.  Install python if you havent already (at least Python 3.6) <br>
