@@ -1,0 +1,4 @@
+How to install apks:
+
+Simply put you apks here in apk folder ./python_adb/apks  <----
+then re-run python_adb.py
