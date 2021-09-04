@@ -68,4 +68,4 @@ def install_app_func():
         for device in devices:
             device.install(apk_path) 
     install_apk()
-    #call install apk function (in this case we use kik.apk)
+    #call install apk function
