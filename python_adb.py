@@ -66,9 +66,6 @@ banner()
 
 print('\n' * 2)
 
-# first of all we need to start adb server:
-
-
 def main_function():
 
     def ask_user_run():
