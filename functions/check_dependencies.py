@@ -50,17 +50,18 @@ def check_all_dependencies():
     def python_dependency():
         sys_ver = sys.version
         sliced_sys_ver = sys_ver[0:7]
-        destination_ver = "3.8"
+        replaced_string = sliced_sys_ver.replace(" ", "")
+        destination_ver = "3.6"
 
         print(bcolors.WARNING + "Your python versio seemts to be...\n" + bcolors.ENDC)
         time.sleep (1)
-        print (bcolors.WARNING + sliced_sys_ver + bcolors.ENDC +"\n")
+        print (bcolors.WARNING + replaced_string + bcolors.ENDC +"\n")
 
-        if version.parse(sliced_sys_ver) >= version.parse(destination_ver):
+        if version.parse(replaced_string) >= version.parse(destination_ver):
             print (bcolors.OKGREEN + "[✓]Your python version seems to be compatible...\n" + bcolors.ENDC)
         else:
             print (bcolors.FAIL + "[x]Your installed version is not compatible..." + bcolors.ENDC)
-            ask_user_update_python = input ("You want to install the compatible python version (3.8.x)?")
+            ask_user_update_python = input ("You want to install the compatible python version (3.6.x)?\nY/n\n>>>")
             if ask_user_update_python in ["Yes", "y", "Y", "yes"]:
                 os.system("sudo apt install python3")
             else:
