@@ -1,9 +1,9 @@
 import os
-from struct import pack
 import subprocess
 import sys
 from packaging import version
 import time
+import re
 
 class bcolors:
         
@@ -51,6 +51,9 @@ def check_all_dependencies():
         sys_ver = sys.version
         sliced_sys_ver = sys_ver[0:7]
         replaced_string = sliced_sys_ver.replace(" ", "")
+
+        numeric_string_pyver = re.sub("[^0-9]", "", replaced_string)
+
         destination_ver = "3.6"
 
         print(bcolors.WARNING + "Your python versio seemts to be...\n" + bcolors.ENDC)
