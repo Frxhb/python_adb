@@ -64,4 +64,6 @@ def install_app_func():
         
     devices = client.devices()
     for device in devices:
-        os.system("adb install " + apk_choice)
+        device.install(apk_choice)
+
+install_app_func()
