@@ -28,6 +28,25 @@ def check_all_dependencies():
         os.system("pip install packaging")
     pack_dep()
 
+    print (bcolors.OKBLUE + "-  python3-pip\n"+ bcolors.ENDC)
+    def pip_dep():
+
+        python_pip_one_location= os.path.exists('/usr/bin/pip')
+        python_pip_two_location= os.path.exists('/usr/bin/pip3')
+
+        if (python_pip_one_location == True) or python_pip_two_location == True:
+            print (bcolors.OKGREEN + "      python3-pip is installed! ✓\n" + bcolors.ENDC)
+        else:
+            print (bcolors.WARNING + "      python3-pip isn't installed! ✕\n" + bcolors.ENDC)
+            ask_user_install_ppadb = input("To move on you need to install the python3-pip.\nYou want to install it now?\nY/n\n>>>")
+            if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
+                print("Installing python3-pip...")
+                os.system("sudo apt install python3-pip")
+            else:
+                print("Okay! Close program now.\n")
+                exit()
+
+    pip_dep()
 
     print (bcolors.OKBLUE + "-  ppab-module\n" + bcolors.ENDC)
 
@@ -62,26 +81,6 @@ def check_all_dependencies():
                 exit()
 
     python_dependency()
-
-    print (bcolors.OKBLUE + "-  python3-pip\n"+ bcolors.ENDC)
-    def pip_dep():
-
-        python_pip_one_location= os.path.exists('/usr/bin/pip')
-        python_pip_two_location= os.path.exists('/usr/bin/pip3')
-
-        if (python_pip_one_location == True) or python_pip_two_location == True:
-            print (bcolors.OKGREEN + "      python3-pip is installed! ✓\n" + bcolors.ENDC)
-        else:
-            print (bcolors.WARNING + "      python3-pip isn't installed! ✕\n" + bcolors.ENDC)
-            ask_user_install_ppadb = input("To move on you need to install the python3-pip.\nYou want to install it now?\nY/n\n>>>")
-            if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
-                print("Installing python3-pip...")
-                os.system("sudo apt install python3-pip")
-            else:
-                print("Okay! Close program now.\n")
-                exit()
-
-    pip_dep()
 
     print (bcolors.OKBLUE + "-  adb\n"+ bcolors.ENDC)
 
