@@ -1,5 +1,4 @@
 import os
-from pydoc import cli
 import subprocess
 import sys
 import time
@@ -18,6 +17,16 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def check_all_dependencies():
+
+    print(bcolors.WARNING + "##################### Dependency Check ###########################################\n\n" + bcolors.ENDC)
+    print(bcolors.WARNING + "In order to run this script, a few dependencies are required. Going to install them..." + bcolors.ENDC)
+    print(bcolors.WARNING + "Required dependencies:\n\n" + bcolors.ENDC)
+    print(bcolors.OKCYAN + "-    android-tools-adb" + bcolors.ENDC)
+    print(bcolors.OKCYAN + "-    pure-python-adb"+ bcolors.ENDC)
+    print(bcolors.OKCYAN + "-    packaging"+ bcolors.ENDC)
+    print(bcolors.OKCYAN + "-    pip3"+ bcolors.ENDC)
+    print(bcolors.OKCYAN + "-    python3.6x\n\n"+ bcolors.ENDC)
+    print(bcolors.WARNING + "##################################################################################\n" + bcolors.ENDC)
 
     print (bcolors.OKBLUE + "-  python3-pip\n"+ bcolors.ENDC)
     def pip_dep():
@@ -72,7 +81,7 @@ def check_all_dependencies():
         print (bcolors.WARNING + clip_remove + bcolors.ENDC +"\n")
 
         if version.parse(clip_remove) >= version.parse(destination_ver):
-            print (bcolors.OKGREEN + "[✓]Your python version seems to be compatible...\n" + bcolors.ENDC)
+            print (bcolors.OKGREEN + "[✓] Your python version seems to be compatible...\n" + bcolors.ENDC)
         else:
             print (bcolors.FAIL + "[x]Your installed version is not compatible..." + bcolors.ENDC)
             ask_user_update_python = input ("You want to install the compatible python version (3.6.x)?\nY/n\n>>>")
