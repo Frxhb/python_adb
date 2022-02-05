@@ -2,7 +2,6 @@ import os
 from pydoc import cli
 import subprocess
 import sys
-from packaging import version
 import time
 import re
 
@@ -22,35 +21,27 @@ def check_all_dependencies():
 
 
     print (bcolors.WARNING + "Going to check your dependencies...\n" + bcolors.ENDC)
-    print (bcolors.OKBLUE + "1.  ppab-module\n" + bcolors.ENDC)
+
+    print (bcolors.OKBLUE + "-  ppab-module\n" + bcolors.ENDC)
+
+    def pack_dep():
+        os.system("pip install packaging")
+    pack_dep()
+
+
+    print (bcolors.OKBLUE + "-  ppab-module\n" + bcolors.ENDC)
 
     def ppadb_dependecy():
-
-        ppadbfile_one= os.path.exists('/usr/local/lib/python3.8/dist-packages/ppadb')
-        ppadbfile_two=os.path.exists('/home/francesco/.local/lib/python3.8/site-packages/ppadb/')
-
-        if (ppadbfile_one == True) or (ppadbfile_two == True):
-            print (bcolors.OKGREEN + "      ppadb is installed! ✓\n" + bcolors.ENDC)
-        else:
-            print (bcolors.WARNING + "      ppadb isn't installed! ✕\n" + bcolors.ENDC)
-            ask_user_install_ppadb = input("To move on you need to install the ppadb module.\nYou want to install it now?\nY/n\n>>>")
-            if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
-                print("Installing ppadb-module...")
-                package_ppadb = "pure-python-adb"
-                def install(package_ppadb):
-                    subprocess.check_call([sys.executable, "-m", "pip", "install", package_ppadb])
-                install(package_ppadb) 
-            else:
-                print("Okay! Close program now.\n")
-                exit()
+        os.system("pip install -U pure-python-adb")    
 
     ppadb_dependecy()
 
-    print (bcolors.OKBLUE + "2.  python-version\n"+ bcolors.ENDC)
+    print (bcolors.OKBLUE + "-  python-version\n"+ bcolors.ENDC)
 
     def python_dependency():
+        from packaging import version
         sys_ver = sys.version
-        sliced_sys_ver = sys_ver[0:7] #xxx
+        sliced_sys_ver = sys_ver[0:7]
         clip_remove = sliced_sys_ver.replace("(","").replace(")","")
 
         destination_ver = "3.6"
@@ -72,9 +63,7 @@ def check_all_dependencies():
 
     python_dependency()
 
-
-
-    print (bcolors.OKBLUE + "3.  python3-pip\n"+ bcolors.ENDC)
+    print (bcolors.OKBLUE + "-  python3-pip\n"+ bcolors.ENDC)
     def pip_dep():
 
         python_pip_one_location= os.path.exists('/usr/bin/pip')
@@ -94,7 +83,7 @@ def check_all_dependencies():
 
     pip_dep()
 
-    print (bcolors.OKBLUE + "4.  adb\n"+ bcolors.ENDC)
+    print (bcolors.OKBLUE + "-  adb\n"+ bcolors.ENDC)
 
     def adb_dep():
 
@@ -113,46 +102,3 @@ def check_all_dependencies():
                 exit()
 
     adb_dep()
-
-    def pack_dep():
-
-        pack_dep_file = ('/usr/lib/python3/dist-packages/pip/_internal/utils/packaging.py')
-        
-        if (pack_dep_file == True):
-            print (bcolors.OKGREEN + "      packaging is installed! ✓\n" + bcolors.ENDC)
-        else:
-            print (bcolors.WARNING + "      packaging isn't installed! ✕\n" + bcolors.ENDC)
-            ask_user_install_ppadb = input("To move on you need to install the packacking module.\nYou want to install it now?\nY/n\n>>>")
-            if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
-                print("Installing packaging...")
-                os.system("pip install packaging")
-            else:
-                print("Okay! Close program now.\n")
-                exit()
-    pack_dep()
-
-    sys_ver = sys.version
-    sliced_sys_ver = sys_ver[0:7]
-    destination_ver = "3.6"
-    if version.parse(sliced_sys_ver) >= version.parse(destination_ver):
-        print("")
-
-    ppadbfile_one= os.path.exists('/usr/local/lib/python3.8/dist-packages/ppadb')
-    ppadbfile_two=os.path.exists('/home/francesco/.local/lib/python3.8/site-packages/ppadb/')
-
-    python_pip_one_location= os.path.exists('/usr/bin/pip')
-    python_pip_two_location= os.path.exists('/usr/bin/pip3')
-
-    adb_file=os.path.exists('/usr/bin/adb')
-
-    pack_dep_file = ('/usr/lib/python3/dist-packages/pip/_internal/utils/packaging.py')
-
-
-    if (ppadbfile_one == True) or (ppadbfile_two == True) and (python_pip_one_location == True) or (python_pip_two_location == True) and (adb_file == True) and (pack_dep_file):
-        print (bcolors.OKGREEN + "Everything seems to be fine! We can continue!\n" + bcolors.ENDC)
-        time.sleep(2)
-        print ("Clearing for better view....")
-        time.sleep(1)
-        os.system("clear")
-    else:
-        print(bcolors.FAIL + "Error occured. Please check your dependencies manually:\n1. Python 3.6x+\n2. Python3-pip\n3. pure-python-adb\n4. packaging" + bcolors.ENDC)
