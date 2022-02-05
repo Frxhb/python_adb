@@ -26,6 +26,7 @@ def check_all_dependencies():
 
     def pack_dep():
         os.system("pip3 install packaging")
+        from packaging import version
     pack_dep()
 
     print (bcolors.OKBLUE + "-  python3-pip\n"+ bcolors.ENDC)
@@ -51,7 +52,7 @@ def check_all_dependencies():
     print (bcolors.OKBLUE + "-  ppab-module\n" + bcolors.ENDC)
 
     def ppadb_dependecy():
-        os.system("pip install -U pure-python-adb")    
+        os.system("pip3 install -U pure-python-adb")    
 
     ppadb_dependecy()
 
