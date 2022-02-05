@@ -14,16 +14,7 @@ import time
 import os
 # Import os to use e.g. os.path.expanduser
 
-from functions import install_apk
-from functions import adb_shell_pm
-from functions import adb_shell
-from functions import reboot_recovery
-from functions import restart_bootloader
-from functions import restart_phone
-from functions import uninstall_apk
-from functions import check_adb_connection
-from functions import check_dependencies
-#import of all functions
+
 
 
 class bcolors:
@@ -67,7 +58,20 @@ banner()
 
 print('\n' * 2)
 
+from functions import check_dependencies
+
 check_dependencies.check_all_dependencies()
+
+from functions import install_apk
+from functions import adb_shell_pm
+from functions import adb_shell
+from functions import reboot_recovery
+from functions import restart_bootloader
+from functions import restart_phone
+from functions import uninstall_apk
+from functions import check_adb_connection
+
+#import of all functions
 
 def main_function():
 
