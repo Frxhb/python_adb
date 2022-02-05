@@ -3,11 +3,12 @@
  #Francesco (Frxhb)
 # Date:
  # 01.08.2021
+# Edited:
+ # 05.02.2022
 # OS:
  # linux-mint 20.2 Cinnamon / Ubuntu
 
 # First we need to import all modules we need:
-import imp
 import time
 # Import time to use functions like time.sleep
 import os
