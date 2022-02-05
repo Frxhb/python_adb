@@ -94,7 +94,7 @@ def check_all_dependencies():
             print (bcolors.OKGREEN + "      adb is installed! ✓\n" + bcolors.ENDC)
         else:
             print (bcolors.WARNING + "      adb isn't installed! ✕\n" + bcolors.ENDC)
-            ask_user_install_ppadb = input("To move on you need to install the ppadb module.\nYou want to install it now?\nY/n\n>>>")
+            ask_user_install_ppadb = input("To move on you need to install the adb module.\nYou want to install it now?\nY/n\n>>>")
             if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
                 print("Installing adb...")
                 os.system("sudo apt install android-tools-adb")
