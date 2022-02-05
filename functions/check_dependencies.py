@@ -19,16 +19,6 @@ class bcolors:
 
 def check_all_dependencies():
 
-
-    print (bcolors.WARNING + "Going to check your dependencies...\n" + bcolors.ENDC)
-
-    print (bcolors.OKBLUE + "-  packaging-module\n" + bcolors.ENDC)
-
-    def pack_dep():
-        os.system("pip3 install packaging")
-        from packaging import version
-    pack_dep()
-
     print (bcolors.OKBLUE + "-  python3-pip\n"+ bcolors.ENDC)
     def pip_dep():
 
@@ -48,6 +38,17 @@ def check_all_dependencies():
                 exit()
 
     pip_dep()
+
+    print (bcolors.WARNING + "Going to check your dependencies...\n" + bcolors.ENDC)
+
+    print (bcolors.OKBLUE + "-  packaging-module\n" + bcolors.ENDC)
+
+    def pack_dep():
+        os.system("pip3 install packaging")
+        from packaging import version
+    pack_dep()
+
+
 
     print (bcolors.OKBLUE + "-  ppab-module\n" + bcolors.ENDC)
 
