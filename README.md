@@ -7,6 +7,7 @@ Right now *Linux only*. <br> <br>
 Tested on following OS:
    - Linux mint Cinnamon & Xfce
    - Raspberry Pi OS on Raspberry Pi 3 and 4
+   - Ubuntu
 
 Already tested on following devices:
 <br>

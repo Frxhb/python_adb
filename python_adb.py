@@ -4,9 +4,10 @@
 # Date:
  # 01.08.2021
 # OS:
- # linux-mint 20.2 Cinnamon
+ # linux-mint 20.2 Cinnamon / Ubuntu
 
 # First we need to import all modules we need:
+import imp
 import time
 # Import time to use functions like time.sleep
 import os
@@ -19,6 +20,9 @@ from functions import reboot_recovery
 from functions import restart_bootloader
 from functions import restart_phone
 from functions import uninstall_apk
+from functions import check_adb_connection
+from functions import check_dependencies
+#import of all functions
 
 
 class bcolors:
@@ -31,10 +35,6 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
-
-
-#clear_terminal = os.system('clear')
-# clear terminal for better usage
 
 def banner():
     print("")
@@ -66,6 +66,8 @@ banner()
 
 print('\n' * 2)
 
+check_dependencies.check_all_dependencies()
+
 def main_function():
 
     def ask_user_run():
@@ -75,13 +77,8 @@ def main_function():
         if user_input in ['yes', 'Yes', 'Y', 'y']:
             main_function()
         else:
-            print("Okay, program will close in 3 seconds...\n")
-            print("3...\n")
-            time.sleep(1)
-            print("2...\n")
-            time.sleep(1)
-            print("1...\n")
-            time.sleep(1)
+            print("Okay, program will close in 2 seconds...\n")
+            time.sleep(2)
             exit()
 
 
@@ -106,9 +103,10 @@ def main_function():
     print(bcolors.OKBLUE + "Start shell:\n" + bcolors.ENDC)
     print("     6. ADB-shell\n")
     print("     7. List installed apps\n")
+    print("     8. Check ADB connection\n")
 
     #del choose_function
-    global choose_function
+    global choose_function8
     choose_function = input("Which tool do you want to use?\n\n>>>")
 
     if choose_function == "1":
@@ -122,7 +120,7 @@ def main_function():
     elif choose_function == "3":
         ask_user_restart = input(
             bcolors.WARNING + "Are you sure you want to restart your phone?\nY/n\n\n>>>" + bcolors.ENDC)
-        if ask_user_restart == "Y":
+        if ask_user_restart in ['yes', 'Yes', 'Y', 'y']:
             print("Okay, you want to restart your phone. Lets go...")
             time.sleep(1)
             print(bcolors.OKGREEN +
@@ -134,7 +132,7 @@ def main_function():
     elif choose_function == "4":
         ask_user_restart_bloader = input(
             bcolors.WARNING + "Are you sure you want to restart your phone into bootloader?\nY/n\n>>>" + bcolors.ENDC)
-        if ask_user_restart_bloader == "Y":
+        if ask_user_restart_bloader in ['yes', 'Yes', 'Y', 'y']:
             print("Okay, you want to restart your phone. Lets go...")
             restart_bootloader.restart_bootloader_func()
         else:
@@ -143,7 +141,7 @@ def main_function():
     elif choose_function == "5":
         ask_user_restart_rec = input(
             bcolors.WARNING + "Are you sure you want to restart your phone into recovery?\nY/n\n>>>" + bcolors.ENDC)
-        if ask_user_restart_rec == "Y":
+        if ask_user_restart_rec in ['yes', 'Yes', 'Y', 'y']:
             print("Okay, you want to restart your phone. Lets go...")
             reboot_recovery.reboot_recovery_func()
         else:
@@ -152,13 +150,16 @@ def main_function():
     elif choose_function == "6":
         ask_user_restart = input(
             bcolors.WARNING + "Are you sure you want to start ADB shell??\nY/n\n>>>" + bcolors.ENDC)
-        if ask_user_restart == "Y":
+        if ask_user_restart in ['yes', 'Yes', 'Y', 'y']:
             adb_shell.adb_shell_function()
         else:
             print("Okay!\n")
 
     elif choose_function == "7":
         adb_shell_pm.adb_shell_pm_function()
+
+    elif choose_function == "8":
+        check_adb_connection.check_adb_con()
 
     else:
         print(bcolors.FAIL + "Wrong choice!" + bcolors.ENDC)

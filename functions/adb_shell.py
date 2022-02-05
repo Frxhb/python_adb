@@ -15,8 +15,11 @@ def adb_shell_function():
 
 
 
-    print(bcolors.OKBLUE + "Okay, I will start adb-shell. You can exit adb shell by typing in ->exit<- and press enter." + bcolors.ENDC)
-    print(bcolors.WARNING + "Watch out. Be aware what you type in." + bcolors.ENDC)
+    print(bcolors.WARNING + "Okay, I will start adb-shell..." + bcolors.ENDC)
+    time.sleep(1)
+    print (bcolors.FAIL + "Watch out. Be aware what you type in. To enter su mode type in 'su' - Superuser-Rights needed!\n")
+    time.sleep(1)
+    print (bcolors.WARNING + "You can exit adb shell by typing in 'exit' and press enter." + bcolors.ENDC)
     print("\n")
     time.sleep(1)
     os.system('adb shell')

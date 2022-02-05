@@ -36,7 +36,7 @@ def install_app_func():
         initial_count += 1
         print('[', initial_count, ']' , file)
 
-    inp = input("Which apk do you want to install?Please just type in a number and press enter.\n>>>")
+    inp = input("Which apk do you want to install? Please just type in a number and press enter.\n>>>")
     apk_choice = files[int(inp)-1]
 
     print('\n' * 1)
