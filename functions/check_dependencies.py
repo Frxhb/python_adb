@@ -54,13 +54,13 @@ def check_all_dependencies():
 
         numeric_string_pyver = re.sub("[^0-9]", "", replaced_string)
 
-        destination_ver = "3.6"
+        destination_ver = "36"
 
         print(bcolors.WARNING + "Your python versio seemts to be...\n" + bcolors.ENDC)
         time.sleep (1)
-        print (bcolors.WARNING + replaced_string + bcolors.ENDC +"\n")
+        print (bcolors.WARNING + sliced_sys_ver + bcolors.ENDC +"\n")
 
-        if version.parse(replaced_string) >= version.parse(destination_ver):
+        if version.parse(numeric_string_pyver) >= version.parse(destination_ver):
             print (bcolors.OKGREEN + "[✓]Your python version seems to be compatible...\n" + bcolors.ENDC)
         else:
             print (bcolors.FAIL + "[x]Your installed version is not compatible..." + bcolors.ENDC)
