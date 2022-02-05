@@ -65,5 +65,3 @@ def install_app_func():
     devices = client.devices()
     for device in devices:
         device.install(apk_choice)
-
-install_app_func()
