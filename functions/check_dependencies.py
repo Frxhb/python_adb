@@ -25,7 +25,7 @@ def check_all_dependencies():
     print (bcolors.OKBLUE + "-  packaging-module\n" + bcolors.ENDC)
 
     def pack_dep():
-        os.system("pip install packaging")
+        os.system("pip3 install packaging")
     pack_dep()
 
     print (bcolors.OKBLUE + "-  python3-pip\n"+ bcolors.ENDC)
