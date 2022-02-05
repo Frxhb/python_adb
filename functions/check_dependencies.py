@@ -62,7 +62,8 @@ def check_all_dependencies():
     print (bcolors.OKBLUE + "-  ppab-module\n" + bcolors.ENDC)
 
     def ppadb_dependecy():
-        os.system("pip3 install -U pure-python-adb")    
+        os.system("pip3 install -U pure-python-adb")
+        os.system("pip install -U pure-python-adb")    
 
     ppadb_dependecy()
 
