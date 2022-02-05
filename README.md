@@ -7,7 +7,7 @@ Right now *Linux only*. <br> <br>
 Tested on following OS:
    - Linux mint Cinnamon & Xfce
    - Raspberry Pi OS on Raspberry Pi 3 and 4
-   - Ubuntu
+   - Ubuntu 20.04.3 LTS
 
 Already tested on following devices:
 <br>
@@ -30,15 +30,14 @@ Already tested on following devices:
 ## Goals:
 1. Implement some of those functions in a GUI
 2. Add some of those functions in own modules
-...
 
 ## Preparation on your Computer: 
 
-There are a few dependecies which you need to have installed when running thr script.
--  Python 3.6x
--  Python3 pip
--  Adb
--  Pure-python-adb
+There are a few dependecies you need:
+-  python 3.6x
+-  python3 pip
+-  adb
+-  pure-python-adb
 
 You don't need to install them, the script can do this for you!
 
@@ -80,3 +79,4 @@ chmod 777 python_adb.py
 ```bash
 python3 python_adb.py
 ```
+6. Finito!
