@@ -1,4 +1,5 @@
 import os
+from pydoc import cli
 import subprocess
 import sys
 from packaging import version
@@ -49,18 +50,16 @@ def check_all_dependencies():
 
     def python_dependency():
         sys_ver = sys.version
-        sliced_sys_ver = sys_ver[0:7]
+        sliced_sys_ver = sys_ver[0:7] #xxx
         clip_remove = sliced_sys_ver.replace("(","").replace(")","")
-        replaced_string = clip_remove.replace(" ", "")
-        numeric_string_pyver = re.sub("[^0-9]", "", replaced_string)
 
-        destination_ver = "3600"
+        destination_ver = "3.6"
 
-        print(bcolors.WARNING + "Your python versio seemts to be...\n" + bcolors.ENDC)
+        print(bcolors.WARNING + "Your python version seemts to be...\n" + bcolors.ENDC)
         time.sleep (1)
-        print (bcolors.WARNING + replaced_string + bcolors.ENDC +"\n")
+        print (bcolors.WARNING + clip_remove + bcolors.ENDC +"\n")
 
-        if version.parse(numeric_string_pyver) >= version.parse(destination_ver):
+        if version.parse(clip_remove) >= version.parse(destination_ver):
             print (bcolors.OKGREEN + "[✓]Your python version seems to be compatible...\n" + bcolors.ENDC)
         else:
             print (bcolors.FAIL + "[x]Your installed version is not compatible..." + bcolors.ENDC)
