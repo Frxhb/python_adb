@@ -21,7 +21,6 @@ def check_all_dependencies():
 
     print (bcolors.WARNING + "Going to check your dependencies...\n" + bcolors.ENDC)
     print (bcolors.OKBLUE + "1.  ppab-module\n" + bcolors.ENDC)
-    time.sleep (1)
 
     def ppadb_dependecy():
 
@@ -44,10 +43,8 @@ def check_all_dependencies():
                 exit()
 
     ppadb_dependecy()
-    time.sleep(1)
 
     print (bcolors.OKBLUE + "2.  python-version\n"+ bcolors.ENDC)
-    time.sleep(1)
 
     def python_dependency():
         sys_ver = sys.version
@@ -70,11 +67,10 @@ def check_all_dependencies():
                 exit()
 
     python_dependency()
-    time.sleep(1)
+
 
 
     print (bcolors.OKBLUE + "3.  python3-pip\n"+ bcolors.ENDC)
-    time.sleep(1)
     def pip_dep():
 
         python_pip_one_location= os.path.exists('/usr/bin/pip')
@@ -93,10 +89,30 @@ def check_all_dependencies():
                 exit()
 
     pip_dep()
-    
+
+    print (bcolors.OKBLUE + "4.  adb\n"+ bcolors.ENDC)
+
+    def adb_dep():
+
+        adb_file=os.path.exists('/usr/bin/adb')
+
+        if (adb_file == True):
+            print (bcolors.OKGREEN + "      adb is installed! ✓\n" + bcolors.ENDC)
+        else:
+            print (bcolors.WARNING + "      adb isn't installed! ✕\n" + bcolors.ENDC)
+            ask_user_install_ppadb = input("To move on you need to install the ppadb module.\nYou want to install it now?\nY/n\n>>>")
+            if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
+                print("Installing adb...")
+                os.system("apt install android-tools-adb")
+            else:
+                print("Okay! Close program now.\n")
+                exit()
+
+    adb_dep()
+
     sys_ver = sys.version
     sliced_sys_ver = sys_ver[0:7]
-    destination_ver = "3.8"
+    destination_ver = "3.6"
     if version.parse(sliced_sys_ver) >= version.parse(destination_ver):
         print("")
 
@@ -106,8 +122,13 @@ def check_all_dependencies():
     python_pip_one_location= os.path.exists('/usr/bin/pip')
     python_pip_two_location= os.path.exists('/usr/bin/pip3')
 
-    if (ppadbfile_one == True) or (ppadbfile_two == True) and (python_pip_one_location == True) or (python_pip_two_location == True):
+    adb_file=os.path.exists('/usr/bin/adb')
+
+    if (ppadbfile_one == True) or (ppadbfile_two == True) and (python_pip_one_location == True) or (python_pip_two_location == True) and (adb_file == True):
         print (bcolors.OKGREEN + "Everything seems to be fine! We can continue!\n" + bcolors.ENDC)
+        time.sleep(2)
+        print ("Clearing for better view....")
         time.sleep(1)
+        os.system("clear")
     else:
         print(bcolors.FAIL + "Error occured. Please check your dependencies manually:\n1. Python 3.6x+\n2. Python3-pip\n3. pure-python-adb" + bcolors.ENDC)

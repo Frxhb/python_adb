@@ -104,6 +104,7 @@ def main_function():
     print(bcolors.OKBLUE + "Start shell:\n" + bcolors.ENDC)
     print("     6. ADB-shell\n")
     print("     7. List installed apps\n")
+    print(bcolors.OKBLUE + "Other:\n" + bcolors.ENDC)
     print("     8. Check ADB connection\n")
 
     #del choose_function
