@@ -34,43 +34,13 @@ Already tested on following devices:
 
 ## Preparation on your Computer: 
 
-1.  Install python if you havent already (at least Python 3.6) <br>
-```bash
-sudo apt-get install python3
-```
+There are a few dependecies which you need to have installed when running thr script.
+-  Python 3.6x
+-  Python3 pip
+-  Adb
+-  Pure-python-adb
 
-<br>
-
-2.  Then you need to install python pip  <br>
-```bash
-sudo apt-get install python3-pip
-```
-<br>
-
-3. After this run:  <br>
-```bash
-sudo apt-get update && sudo apt-get upgrade
-```
-<br>    
-
-4. Then install pure python:  <br>
-```bash
-pip3 install -U pure-python-adb
-```
-<br>  
-
-
-5. Make sure you have adb installed  <br>
-```bash
-whereis adb
-```
-<br>
-
-If there is no adb folder, do: <br>
-```bash
-sudo apt install adb
-```
-<br> 
+You don't need to install them, the script can do this for you!
 
 ## Preparation on your device
 
