@@ -37,7 +37,8 @@ There are a few dependecies you need:
 -  python 3.6x
 -  python3 pip
 -  adb
--  pure-python-adb
+-  pure-python-adb-module
+-  packaging-module
 
 You don't need to install them, the script can do this for you!
 
