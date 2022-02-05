@@ -1,4 +1,5 @@
 import os
+from struct import pack
 import subprocess
 import sys
 from packaging import version
@@ -110,6 +111,23 @@ def check_all_dependencies():
 
     adb_dep()
 
+    def pack_dep():
+
+        pack_dep_file = ('/usr/lib/python3/dist-packages/pip/_internal/utils/packaging.py')
+        
+        if (pack_dep_file == True):
+            print (bcolors.OKGREEN + "      packaging is installed! ✓\n" + bcolors.ENDC)
+        else:
+            print (bcolors.WARNING + "      packaging isn't installed! ✕\n" + bcolors.ENDC)
+            ask_user_install_ppadb = input("To move on you need to install the packacking module.\nYou want to install it now?\nY/n\n>>>")
+            if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
+                print("Installing packaging...")
+                os.system("pip install packaging")
+            else:
+                print("Okay! Close program now.\n")
+                exit()
+    pack_dep()
+
     sys_ver = sys.version
     sliced_sys_ver = sys_ver[0:7]
     destination_ver = "3.6"
@@ -124,11 +142,14 @@ def check_all_dependencies():
 
     adb_file=os.path.exists('/usr/bin/adb')
 
-    if (ppadbfile_one == True) or (ppadbfile_two == True) and (python_pip_one_location == True) or (python_pip_two_location == True) and (adb_file == True):
+    pack_dep_file = ('/usr/lib/python3/dist-packages/pip/_internal/utils/packaging.py')
+
+
+    if (ppadbfile_one == True) or (ppadbfile_two == True) and (python_pip_one_location == True) or (python_pip_two_location == True) and (adb_file == True) and (pack_dep_file):
         print (bcolors.OKGREEN + "Everything seems to be fine! We can continue!\n" + bcolors.ENDC)
         time.sleep(2)
         print ("Clearing for better view....")
         time.sleep(1)
         os.system("clear")
     else:
-        print(bcolors.FAIL + "Error occured. Please check your dependencies manually:\n1. Python 3.6x+\n2. Python3-pip\n3. pure-python-adb" + bcolors.ENDC)
+        print(bcolors.FAIL + "Error occured. Please check your dependencies manually:\n1. Python 3.6x+\n2. Python3-pip\n3. pure-python-adb\n4. packaging" + bcolors.ENDC)
