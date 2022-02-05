@@ -22,7 +22,7 @@ def check_all_dependencies():
 
     print (bcolors.WARNING + "Going to check your dependencies...\n" + bcolors.ENDC)
 
-    print (bcolors.OKBLUE + "-  ppab-module\n" + bcolors.ENDC)
+    print (bcolors.OKBLUE + "-  packaging-module\n" + bcolors.ENDC)
 
     def pack_dep():
         os.system("pip install packaging")
