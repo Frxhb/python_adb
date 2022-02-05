@@ -84,7 +84,7 @@ def check_all_dependencies():
             ask_user_install_ppadb = input("To move on you need to install the python3-pip.\nYou want to install it now?\nY/n\n>>>")
             if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
                 print("Installing python3-pip...")
-                os.system("sudo apt-get install python3-pip")
+                os.system("sudo apt install python3-pip")
             else:
                 print("Okay! Close program now.\n")
                 exit()
@@ -104,7 +104,7 @@ def check_all_dependencies():
             ask_user_install_ppadb = input("To move on you need to install the ppadb module.\nYou want to install it now?\nY/n\n>>>")
             if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
                 print("Installing adb...")
-                os.system("apt install android-tools-adb")
+                os.system("sudo apt install android-tools-adb")
             else:
                 print("Okay! Close program now.\n")
                 exit()
