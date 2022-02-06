@@ -1,11 +1,10 @@
-from asyncore import dispatcher_with_send
 import subprocess
 from ppadb.client import Client as AdbClient
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-import wget
 import os
 import time
+import requests
 
 class bcolors:
     HEADER = '\033[95m'
@@ -20,6 +19,18 @@ class bcolors:
 
 
 def download_twrp_func():
+
+    def download_magisk_req():
+        url = "https://dl.twrp.me/gauguin/twrp-3.5.2_10-0-gauguin.img"
+
+        headers = {
+            "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:96.0) Gecko/20100101 Firefox/96.0",
+            "Referer": "https://dl.twrp.me/gauguin/twrp-3.5.2_10-0-gauguin.img",
+        }
+
+        r = requests.get(url, headers=headers)
+        with open("twrp-3.5.2_10-0-gauguin.img", "wb") as f_out:
+            f_out.write(r.content)
     
     client = AdbClient(host="127.0.0.1", port=5037)
     adb_devicesL = subprocess.run(['adb' , 'devices' , '-l'], stdout=subprocess.PIPE).stdout.decode('utf-8')
@@ -62,8 +73,9 @@ def download_twrp_func():
         download_link_end = download_link_twrp + end_string_link
     
         print("Now I will download the latest twrp-recovery for your device...:\n")
-        print(download_link_end)
-        wget.download(download_link_end)
+        #print(download_link_end)
+
+        download_magisk_req()
 
         time.sleep(1)
 
@@ -76,8 +88,13 @@ def download_twrp_func():
 
             parent_dir = (cwd + "/twrp_files/")
             dir = just_device
-            path = os.path.join(parent_dir, dir)
-            os.mkdir(path)
+
+            try:
+
+                path = os.path.join(parent_dir, dir)
+                os.mkdir(path)
+            except FileExistsError:
+                pass
 
             os.system("mv *.img ./twrp_files/" + just_device + ">/dev/null 2>&1")
 
@@ -86,3 +103,5 @@ def download_twrp_func():
 
     else:
         print(bcolors.FAIL + "I haven't found any device. Please make sure your device is connected sucessfully!" + bcolors.ENDC)
+
+download_twrp_func()
