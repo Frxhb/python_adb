@@ -1,3 +1,4 @@
+from asyncore import dispatcher_with_send
 import subprocess
 from ppadb.client import Client as AdbClient
 from bs4 import BeautifulSoup
@@ -67,8 +68,21 @@ def download_twrp_func():
         time.sleep(1)
 
         cwd = os.getcwd()
+        end_file_twrp_dir = cwd + "/twrp_files"
+        print (end_file_twrp_dir)
+
         if any(File.startswith("twrp") and File.endswith(".img") for File in os.listdir(cwd)):
-            print(bcolors.OKGREEN + "\n\nDownload sucessfull!" + bcolors.ENDC)
+            print(bcolors.OKGREEN + "\n\nDownload successful!\n" + bcolors.ENDC)
+
+            parent_dir = (cwd + "/twrp_files/")
+            dir = just_device
+            path = os.path.join(parent_dir, dir)
+            os.mkdir(path)
+
+            os.system("mv *.img ./twrp_files/" + just_device + ">/dev/null 2>&1")
+
+            print(bcolors.OKGREEN + "You can find your file here:"+bcolors.ENDC)
+            print(bcolors.BOLD + end_file_twrp_dir + end_string_link + bcolors.ENDC) 
 
     else:
         print(bcolors.FAIL + "I haven't found any device. Please make sure your device is connected sucessfully!" + bcolors.ENDC)
