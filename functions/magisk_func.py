@@ -1,6 +1,4 @@
 def download_magisk_zip():
-
-    from ast import And
     import os
     import os.path
     import glob
