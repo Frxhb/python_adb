@@ -3,3 +3,5 @@ apks/*.xapk
 __pycache__
 magisk/*.zip
 ./magisk/*.zip
+*.img
+*.apk
