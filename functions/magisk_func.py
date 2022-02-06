@@ -33,4 +33,4 @@ def download_magisk_zip():
         print(bcolors.BOLD + end_file_dir + bcolors.ENDC)
 
     else:
-        print(bcolors.FAIL + "Download failed. Please download magisk manually!" + bcolors.ENDC)
+        print(bcolors.FAIL + "Download failed. Please download magisk manually!\nYou can find more infos here:\nhttps://github.com/topjohnwu/Magisk" + bcolors.ENDC)
