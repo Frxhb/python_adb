@@ -71,7 +71,7 @@ from functions import restart_phone
 from functions import uninstall_apk
 from functions import check_adb_connection
 from functions import magisk_func
-
+from functions import download_twrp
 #import of all functions
 
 def main_function():
@@ -112,6 +112,7 @@ def main_function():
     print(bcolors.OKBLUE + "Other:\n" + bcolors.ENDC)
     print("     8. Check ADB connection\n")
     print("     9. Download latest magisk.zip\n")
+    print("     10. Download latest custom recovery -> twrp.img\n")
 
     #del choose_function
     global choose_function8
@@ -171,6 +172,9 @@ def main_function():
 
     elif choose_function == "9":
         magisk_func.download_magisk_zip()
+
+    elif choose_function == "10":
+        download_twrp.download_twrp_func() 
 
     else:
         print(bcolors.FAIL + "Wrong choice!" + bcolors.ENDC)
