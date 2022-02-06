@@ -103,5 +103,3 @@ def download_twrp_func():
 
     else:
         print(bcolors.FAIL + "I haven't found any device. Please make sure your device is connected sucessfully!" + bcolors.ENDC)
-
-download_twrp_func()
