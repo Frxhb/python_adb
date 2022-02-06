@@ -25,7 +25,7 @@ def check_all_dependencies():
     print(bcolors.OKCYAN + "-    packaging"+ bcolors.ENDC)
     print(bcolors.OKCYAN + "-    pip3"+ bcolors.ENDC)
     print(bcolors.OKCYAN + "-    python3.6x"+ bcolors.ENDC)
-    print(bcolors.OKCYAN + "-    wget-module\n\n"+ bcolors.ENDC)
+    print(bcolors.OKCYAN + "-    fastboot-tools\n\n"+ bcolors.ENDC)
     print(bcolors.WARNING + "##################################################################################\n" + bcolors.ENDC)
 
     def pip_dep():
@@ -100,7 +100,7 @@ def check_all_dependencies():
 
     adb_dep()
 
-    def wget_module():
-        os.system("pip3 install wget"  + ">/dev/null 2>&1")
+    def fastboot_tools_install():
+        os.system("sudo apt install fastboot" + ">/dev/null 2>&1")
     
-    wget_module()
+    fastboot_tools_install()
