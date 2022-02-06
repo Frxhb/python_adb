@@ -70,6 +70,7 @@ from functions import restart_bootloader
 from functions import restart_phone
 from functions import uninstall_apk
 from functions import check_adb_connection
+from functions import magisk_func
 
 #import of all functions
 
@@ -110,6 +111,7 @@ def main_function():
     print("     7. List installed apps\n")
     print(bcolors.OKBLUE + "Other:\n" + bcolors.ENDC)
     print("     8. Check ADB connection\n")
+    print("     9. Download latest magisk.zip\n")
 
     #del choose_function
     global choose_function8
@@ -166,6 +168,9 @@ def main_function():
 
     elif choose_function == "8":
         check_adb_connection.check_adb_con()
+
+    elif choose_function == "9":
+        magisk_func.download_magisk_zip()
 
     else:
         print(bcolors.FAIL + "Wrong choice!" + bcolors.ENDC)
