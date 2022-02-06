@@ -24,9 +24,10 @@ def connect_to_client():
     device = client.device(adb_devicesL)
     model_check = "model"
     if str(model_check) in str(adb_devicesL): 
-        print("I have found the following device:\n")
-        print(adb_devicesL.split()[8])
-        print(adb_devicesL.split()[7])
+        print(bcolors.BOLD + "\nI have found the following device:\n" + bcolors.ENDC)
+        print(bcolors.OKGREEN + adb_devicesL.split()[9] + bcolors.ENDC)
+        print(bcolors.OKGREEN + adb_devicesL.split()[8] + bcolors.ENDC)
+        print(bcolors.OKGREEN + adb_devicesL.split()[7] + bcolors.ENDC+"\n")
     else:
         print(bcolors.FAIL + "No device found.\nPlease make sure your device is properly connected and usb-debugging is enabled.\n\n" + bcolors.ENDC)
         ask_again = input("Would you like to re-run the programm? Y/n:\n>>>")
