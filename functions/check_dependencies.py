@@ -2,7 +2,6 @@ import os
 import subprocess
 import sys
 import time
-import re
 
 class bcolors:
         
@@ -49,7 +48,6 @@ def check_all_dependencies():
     pip_dep()
 
     print (bcolors.WARNING + "Going to check your dependencies...\n" + bcolors.ENDC)
-
     print (bcolors.OKBLUE + "-  packaging-module\n" + bcolors.ENDC)
 
     def pack_dep():
