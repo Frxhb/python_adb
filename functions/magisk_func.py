@@ -22,13 +22,16 @@ def download_magisk_zip():
     new_file_name = ("magisk_" +magisk_file)
     clip_remove = new_file_name.replace("[","").replace("]","").replace("'","")
     end_file_dir = './magisk/' + clip_remove
-    os.system("mv ./*.zip ./magisk/" + clip_remove + ">/dev/null 2>&1") 
 
-    magisk_dir = "./magisk/"
-    if any(File.startswith("magisk") and File.endswith(".zip") for File in os.listdir(magisk_dir)):
-        print(bcolors.OKGREEN + "Download sucessfully!\n" + bcolors.ENDC)
+    cwd = os.getcwd()
+
+    os.system("mv ./*zip ./" + clip_remove)
+
+    if any(File.startswith("magisk") and File.endswith(".zip") for File in os.listdir(cwd)):
+        print(bcolors.OKGREEN + "Download successful!\n" + bcolors.ENDC)
+        os.system("mv ./*.zip ./magisk/")
         print(bcolors.OKGREEN + "You can find your file here:"+bcolors.ENDC)
-        print(bcolors.BOLD + end_file_dir + bcolors.ENDC)
-
+        print(bcolors.BOLD + cwd + "/magisk/" + clip_remove + bcolors.ENDC)
+         
     else:
         print(bcolors.FAIL + "Download failed. Please download magisk manually!\nYou can find more infos here:\nhttps://github.com/topjohnwu/Magisk" + bcolors.ENDC)
