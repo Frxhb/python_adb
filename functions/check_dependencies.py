@@ -40,7 +40,7 @@ def check_all_dependencies():
             ask_user_install_ppadb = input("To move on you need to install the python3-pip.\nYou want to install it now?\nY/n\n>>>")
             if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
                 print("Installing python3-pip...")
-                os.system("sudo apt install python3-pip"  + ">/dev/null 2>&1")
+                os.system("sudo apt install python3-pip -y"  + ">/dev/null 2>&1")
             else:
                 print("Okay! Close program now.\n")
                 exit()
@@ -75,7 +75,7 @@ def check_all_dependencies():
             print (bcolors.FAIL + "[x]Your installed version is not compatible..." + bcolors.ENDC)
             ask_user_update_python = input ("You want to install the compatible python version (3.6.x)?\nY/n\n>>>")
             if ask_user_update_python in ["Yes", "y", "Y", "yes"]:
-                os.system("sudo apt install python3"  + ">/dev/null 2>&1")
+                os.system("sudo apt install python3 -y"  + ">/dev/null 2>&1")
             else:
                 print("Okay! Close program now.\n")
                 exit()
@@ -93,7 +93,7 @@ def check_all_dependencies():
             ask_user_install_ppadb = input("To move on you need to install the adb module.\nYou want to install it now?\nY/n\n>>>")
             if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
                 print("Installing adb...")
-                os.system("sudo apt install android-tools-adb" + ">/dev/null 2>&1")
+                os.system("sudo apt install android-tools-adb -y" + ">/dev/null 2>&1")
             else:
                 print("Okay! Close program now.\n")
                 exit()
@@ -101,6 +101,6 @@ def check_all_dependencies():
     adb_dep()
 
     def fastboot_tools_install():
-        os.system("sudo apt install fastboot" + ">/dev/null 2>&1")
+        os.system("sudo apt install fastboot -y" + ">/dev/null 2>&1")
     
     fastboot_tools_install()
