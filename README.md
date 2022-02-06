@@ -39,6 +39,7 @@ There are a few dependecies you need:
 -  adb
 -  pure-python-adb-module
 -  packaging-module
+-  wget module
 
 You don't need to install them, the script can do this for you!
 
