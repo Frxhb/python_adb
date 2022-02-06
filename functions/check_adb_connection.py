@@ -24,6 +24,7 @@ def check_adb_con():
     if str(model_check) in str(adb_devicesL):
         print(bcolors.OKGREEN + "Adb connection works ✓\n"+bcolors.ENDC)
         print("I have found the following device(s):\n")
+        print(bcolors.OKGREEN + adb_devicesL.split()[9] + bcolors.ENDC)
         print(bcolors.OKGREEN + adb_devicesL.split()[8] + bcolors.ENDC)
         print(bcolors.OKGREEN + adb_devicesL.split()[7] + bcolors.ENDC)
     else:
