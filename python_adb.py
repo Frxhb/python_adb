@@ -14,9 +14,6 @@ import time
 import os
 # Import os to use e.g. os.path.expanduser
 
-
-
-
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
