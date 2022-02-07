@@ -26,22 +26,21 @@ Already tested on following devices:
 
     [Link to device info](https://www.devicespecifications.com/en/model/bdd9488c)
 
-
-## Goals:
-1. Implement some of those functions in a GUI
-2. Add some of those functions in own modules
-
 ## Preparation on your Computer: 
 
-There are a few dependecies you need:
--  python 3.6x
--  python3 pip
--  adb
--  pure-python-adb-module
--  packaging-module
--  fastboot-tools
+There are a few dependecies you need. When running the script, those dependencies will be installed automatically.
 
-You don't need to install them, the script can do this for you!
+### Dependencies
+-  [python 3.6x](https://www.python.org/)
+-  [python pip](https://pypi.org/project/pip/)
+-  [adb](https://developer.android.com/studio/command-line/adb)
+-  [fastboot-tools](https://wiki.ubuntuusers.de/fastboot/)
+-  pure-python-adb module:
+   <br>
+   -  [Github](https://github.com/Swind/pure-python-adb)
+   <br>
+   -  [module](https://pypi.org/project/pure-python-adb/)
+-  [packaging module](https://pypi.org/project/packaging/)
 
 ## Preparation on your device
 
@@ -58,6 +57,7 @@ You don't need to install them, the script can do this for you!
 <br>
 
 ## How to run adb_python script:
+<br>
 
 1. Clone git repo to your computer.
 ```bash
