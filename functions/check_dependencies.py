@@ -18,7 +18,7 @@ class bcolors:
 def check_all_dependencies():
 
     print(bcolors.WARNING + "##################### Dependency Check ###########################################\n\n" + bcolors.ENDC)
-    print(bcolors.WARNING + "In order to run this script, a few dependencies are required. Going to install them..." + bcolors.ENDC)
+    print(bcolors.WARNING + "In order to run this script, a few dependencies are required. You may need to enter your sudo passwd.Going to install them..." + bcolors.ENDC)
     print(bcolors.WARNING + "Required dependencies:\n\n" + bcolors.ENDC)
     print(bcolors.OKCYAN + "-    android-tools-adb" + bcolors.ENDC)
     print(bcolors.OKCYAN + "-    pure-python-adb"+ bcolors.ENDC)
@@ -40,7 +40,7 @@ def check_all_dependencies():
             ask_user_install_ppadb = input("To move on you need to install the python3-pip.\nYou want to install it now?\nY/n\n>>>")
             if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
                 print("Installing python3-pip...")
-                os.system("sudo apt install python3-pip -y"  + ">/dev/null 2>&1")
+                os.system("sudo apt install python3-pip -y")
             else:
                 print("Okay! Close program now.\n")
                 exit()
@@ -48,12 +48,12 @@ def check_all_dependencies():
     pip_dep()
 
     def pack_dep():
-        os.system("pip3 install packaging" + ">/dev/null 2>&1")
+        os.system("pip3 install packaging")
         from packaging import version
     pack_dep()
 
     def ppadb_dependecy():
-        os.system("pip3 install -U pure-python-adb"  + ">/dev/null 2>&1")   
+        os.system("pip3 install -U pure-python-adb")   
 
     ppadb_dependecy()
 
@@ -75,7 +75,7 @@ def check_all_dependencies():
             print (bcolors.FAIL + "[x]Your installed version is not compatible..." + bcolors.ENDC)
             ask_user_update_python = input ("You want to install the compatible python version (3.6.x)?\nY/n\n>>>")
             if ask_user_update_python in ["Yes", "y", "Y", "yes"]:
-                os.system("sudo apt install python3 -y"  + ">/dev/null 2>&1")
+                os.system("sudo apt install python3 -y")
             else:
                 print("Okay! Close program now.\n")
                 exit()
@@ -93,7 +93,7 @@ def check_all_dependencies():
             ask_user_install_ppadb = input("To move on you need to install the adb module.\nYou want to install it now?\nY/n\n>>>")
             if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
                 print("Installing adb...")
-                os.system("sudo apt install android-tools-adb -y" + ">/dev/null 2>&1")
+                os.system("sudo apt install android-tools-adb -y")
             else:
                 print("Okay! Close program now.\n")
                 exit()
@@ -101,6 +101,21 @@ def check_all_dependencies():
     adb_dep()
 
     def fastboot_tools_install():
-        os.system("sudo apt install fastboot -y" + ">/dev/null 2>&1")
+
+        fastboot_file=os.path.exists('/usr/bin/fastboot')
+
+        if (fastboot_file == True):
+            print ("")
+        else:
+            print (bcolors.WARNING + "      fastboot isn't installed! ✕\n" + bcolors.ENDC)
+            ask_user_install_ppadb = input("To move on you need to install the fastboot module.\nYou want to install it now?\nY/n\n>>>")
+            if ask_user_install_ppadb in ['yes', 'Yes', 'Y', 'y']:
+                print("Installing fastboot...")
+                os.system("sudo apt install fastboot -y")
+            else:
+                print("Okay! Close program now.\n")
+                exit()
     
     fastboot_tools_install()
+
+#  + ">/dev/null 2>&1"

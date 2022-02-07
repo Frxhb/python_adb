@@ -69,6 +69,7 @@ from functions import uninstall_apk
 from functions import check_adb_connection
 from functions import magisk_func
 from functions import download_twrp
+from functions import fastboot_connect
 #import of all functions
 
 def main_function():
@@ -106,10 +107,14 @@ def main_function():
     print(bcolors.OKBLUE + "Start shell:\n" + bcolors.ENDC)
     print("     6. ADB-shell\n")
     print("     7. List installed apps\n")
+    print(bcolors.OKBLUE + "Fastboot utilities:\n" + bcolors.ENDC)
+    print("     8. Download latest custom recovery -> twrp.img\n")
+    print("     9. Reboot into fastboot\n")
+    print("     10. Boot custom recovery (twrp)\n")
     print(bcolors.OKBLUE + "Other:\n" + bcolors.ENDC)
-    print("     8. Check ADB connection\n")
-    print("     9. Download latest magisk.zip\n")
-    print("     10. Download latest custom recovery -> twrp.img\n")
+    print("     11. Check ADB connection\n")
+    print("     12. Download latest magisk.zip\n")
+
 
     #del choose_function
     global choose_function8
@@ -165,14 +170,23 @@ def main_function():
         adb_shell_pm.adb_shell_pm_function()
 
     elif choose_function == "8":
+        download_twrp.download_twrp_func() 
         check_adb_connection.check_adb_con()
 
     elif choose_function == "9":
+        fastboot_connect.fastboot_func()
         magisk_func.download_magisk_zip()
 
     elif choose_function == "10":
-        download_twrp.download_twrp_func() 
+        #boot custom recovery
+        print("")
 
+    elif choose_function == "11":
+        check_adb_connection.check_adb_con()
+    
+    elif choose_function == "12":
+        magisk_func.download_magisk_zip()
+        
     else:
         print(bcolors.FAIL + "Wrong choice!" + bcolors.ENDC)
 
