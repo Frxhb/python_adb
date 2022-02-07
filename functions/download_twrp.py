@@ -19,19 +19,6 @@ class bcolors:
 
 
 def download_twrp_func():
-
-    def download_magisk_req():
-        url = "https://dl.twrp.me/gauguin/twrp-3.5.2_10-0-gauguin.img"
-
-        headers = {
-            "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:96.0) Gecko/20100101 Firefox/96.0",
-            "Referer": "https://dl.twrp.me/gauguin/twrp-3.5.2_10-0-gauguin.img",
-        }
-
-        r = requests.get(url, headers=headers)
-        with open("twrp-3.5.2_10-0-gauguin.img", "wb") as f_out:
-            f_out.write(r.content)
-    
     client = AdbClient(host="127.0.0.1", port=5037)
     adb_devicesL = subprocess.run(['adb' , 'devices' , '-l'], stdout=subprocess.PIPE).stdout.decode('utf-8')
     device = client.device(adb_devicesL)
@@ -71,9 +58,25 @@ def download_twrp_func():
         #here we cut the "html" cause we cant just link ends with ".img"
 
         download_link_end = download_link_twrp + end_string_link
+
+        link_for_withopen_one = end_string_link.replace("/" + just_device, "")
+        link_for_withopen_two = link_for_withopen_one.replace("/" , "")
+        #print(link_for_withopen_two)
     
         print("Now I will download the latest twrp-recovery for your device...:\n")
         #print(download_link_end)
+
+        def download_magisk_req():
+            url = download_link_end
+
+            headers = {
+                "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:96.0) Gecko/20100101 Firefox/96.0",
+                "Referer": download_link_end ,
+            }
+
+            r = requests.get(url, headers=headers)
+            with open(link_for_withopen_two, "wb") as f_out:
+                f_out.write(r.content)
 
         download_magisk_req()
 
@@ -81,7 +84,7 @@ def download_twrp_func():
 
         cwd = os.getcwd()
         end_file_twrp_dir = cwd + "/twrp_files"
-        print (end_file_twrp_dir)
+        #print (end_file_twrp_dir)
 
         if any(File.startswith("twrp") and File.endswith(".img") for File in os.listdir(cwd)):
             print(bcolors.OKGREEN + "\n\nDownload successful!\n" + bcolors.ENDC)
