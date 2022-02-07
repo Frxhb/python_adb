@@ -171,15 +171,13 @@ def main_function():
 
     elif choose_function == "8":
         download_twrp.download_twrp_func() 
-        check_adb_connection.check_adb_con()
 
     elif choose_function == "9":
         fastboot_connect.fastboot_func()
-        magisk_func.download_magisk_zip()
-
+        
     elif choose_function == "10":
         #boot custom recovery
-        print("")
+        print("not working rn")
 
     elif choose_function == "11":
         check_adb_connection.check_adb_con()
