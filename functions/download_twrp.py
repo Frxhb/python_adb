@@ -99,6 +99,9 @@ def download_twrp_func():
             except FileExistsError:
                 pass
 
+
+            os.system("cp *.img ./recovery/" + ">/dev/null 2>&1")
+
             os.system("mv *.img ./twrp_files/" + just_device + ">/dev/null 2>&1")
 
             print(bcolors.OKGREEN + "You can find your file here:"+bcolors.ENDC)
