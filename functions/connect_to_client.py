@@ -1,3 +1,4 @@
+import imp
 import subprocess 
 #Import subprocess module to be able to start subprocesses
 class bcolors:
@@ -16,10 +17,9 @@ def connect_to_client():
     from ppadb.client import Client as AdbClient
     # Default is "127.0.0.1" and 5037
     client = AdbClient(host="127.0.0.1", port=5037)
-
     global adb_devicesL
     adb_devicesL = subprocess.run(['adb' , 'devices' , '-l'], stdout=subprocess.PIPE).stdout.decode('utf-8')
-
+    
     global device
     device = client.device(adb_devicesL)
     model_check = "model"

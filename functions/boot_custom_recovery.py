@@ -75,5 +75,3 @@ def boot_custom_rec():
     print(rec_path)
 
     os.system("fastboot boot " + cwd_and_rec)
-
-boot_custom_rec()

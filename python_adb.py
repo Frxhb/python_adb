@@ -70,6 +70,7 @@ from functions import check_adb_connection
 from functions import magisk_func
 from functions import download_twrp
 from functions import fastboot_connect
+from functions import boot_custom_recovery
 #import of all functions
 
 def main_function():
@@ -177,7 +178,7 @@ def main_function():
         
     elif choose_function == "10":
         #boot custom recovery
-        print("not working rn")
+        boot_custom_recovery.boot_custom_rec()
 
     elif choose_function == "11":
         check_adb_connection.check_adb_con()

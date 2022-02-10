@@ -49,12 +49,10 @@ def check_all_dependencies():
 
     def pack_dep():
         os.system("pip3 install packaging")
-        from packaging import version
     pack_dep()
 
     def bsfour_dep():
         os.system("pip3 install beautifulsoup4")
-        import bs4
     bsfour_dep()
 
     def ppadb_dependecy():
