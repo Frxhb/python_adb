@@ -47,10 +47,13 @@ def check_all_dependencies():
 
     pip_dep()
 
+    """
     def pack_dep():
         os.system("pip3 install packaging")
+        time.sleep(1)
     pack_dep()
-
+    """
+    
     def bsfour_dep():
         os.system("pip3 install beautifulsoup4")
     bsfour_dep()
@@ -60,8 +63,9 @@ def check_all_dependencies():
 
     ppadb_dependecy()
 
+    """
     def python_dependency():
-        from packaging import version
+        
         sys_ver = sys.version
         sliced_sys_ver = sys_ver[0:7]
         clip_remove = sliced_sys_ver.replace("(","").replace(")","")
@@ -71,6 +75,8 @@ def check_all_dependencies():
         print(bcolors.WARNING + "Your python version seemts to be...\n" + bcolors.ENDC)
         time.sleep (1)
         print (bcolors.WARNING + clip_remove + bcolors.ENDC +"\n")
+
+        from packaging import version
 
         if version.parse(clip_remove) >= version.parse(destination_ver):
             print (bcolors.OKGREEN + "[✓] Your python version is compatible...\n" + bcolors.ENDC)
@@ -84,7 +90,7 @@ def check_all_dependencies():
                 exit()
 
     python_dependency()
-
+    """
     def adb_dep():
 
         adb_file=os.path.exists('/usr/bin/adb')
